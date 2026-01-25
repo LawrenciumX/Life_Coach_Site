@@ -5,7 +5,7 @@ const animate = (el) => {
   const target = +el.dataset.count;
   const suffix = el.dataset.suffix || "";
   let current = 0;
-  const duration = 1000;
+  const duration = 2000;
   const start = performance.now();
 
   const tick = (now) => {
@@ -113,6 +113,31 @@ observer.unobserve(entry.target);
 );
 
 slideElements.forEach(el => slideObserver.observe(el));
+
+document.querySelectorAll(".faq-question").forEach(button => {
+    button.addEventListener("click", () => {
+    const item = button.closest(".faq-item");
+const icon = button.querySelector(".faq-icon");
+const isOpen = item.classList.contains("active");
+
+// Close all
+document.querySelectorAll(".faq-item").forEach(i => {
+    i.classList.remove("active");
+const iIcon = i.querySelector(".faq-icon");
+if (iIcon) iIcon.textContent = "+";
+});
+
+// Open clicked
+if (!isOpen) {
+    item.classList.add("active");
+    icon.textContent = "×";
+}
+});
+});
+
+
+
+
 
 
 
