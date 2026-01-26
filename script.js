@@ -73,27 +73,14 @@ entry.target.classList.add("in-view");
 serviceImages.forEach(img => imageObserver.observe(img));
 
 // Subtle parallax on scroll
-/*window.addEventListener("scroll", () => {
+window.addEventListener("scroll", () => {
   serviceImages.forEach(image => {
   const rect = image.getBoundingClientRect();
 const speed = 0.08;
 const offset = rect.top * speed;
 image.style.transform = `translateY(${offset}px)`;
 });
-});*/
-
-const isMobile = window.matchMedia("(max-width: 768px)").matches;
-
-if (!isMobile) {
-    window.addEventListener("scroll", () => {
-        serviceImages.forEach(image => {
-        const rect = image.getBoundingClientRect();
-    const speed = 0.08;
-    const offset = rect.top * speed;
-    image.style.transform = `translateY(${offset}px)`;
 });
-});
-}
 
 
 
