@@ -9,7 +9,7 @@
 }
 
 * { box-sizing: border-box; }
-html, body { height: 100%;overflow-x: hidden; scroll-behavior: smooth; }
+html, body { height: 100%;overflow-x: hidden; scroll-behavior: auto; }
 section {
   padding: 96px 20px;
 }
