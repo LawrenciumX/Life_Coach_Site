@@ -32,7 +32,7 @@ body {
 
 .hero {
   position: relative;
-  min-height: 100dvh;
+  min-height: 100vh;
   overflow: hidden;
 }
 
@@ -125,7 +125,7 @@ body {
 .hero-content {
   position: relative;
   z-index: 2;
-  min-height: calc(100dvh - 100px);
+  min-height: calc(100vh - 100px);
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 36px;
