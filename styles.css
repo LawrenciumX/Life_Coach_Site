@@ -948,10 +948,27 @@ body {
     overflow-x: hidden;
   }
 
-    .reveal-slide-left,
+    /*.reveal-slide-left,
     .reveal-slide-right {
-      /*transform: translateY(20px);*/
+      transform: translateY(20px);
+    }*/
+
+  .reveal-slide-left,
+  .reveal-slide-right {
+    opacity: 0;
+    transform: translateY(26px) scale(0.985);
+    transition:
+            opacity 1.2s ease,
+            transform 1.2s cubic-bezier(.22,.61,.36,1);
   }
+
+  .reveal-slide-left.visible,
+  .reveal-slide-right.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+
 
 }
 
