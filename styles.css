@@ -9,13 +9,13 @@
 }
 
 * { box-sizing: border-box; }
-html, body { height: 100%; overflow-x: hidden; }
+html, body { height: 100%; /*overflow-x: hidden;*/ }
 img {
   max-width: 100%;
 }
-* {
+/** {
   outline: 1px solid red;
-}
+}*/
 body {
   margin: 0;
   font-family: var(--sans);
