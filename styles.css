@@ -741,6 +741,7 @@ body {
   display: flex;
   justify-content: center;
   gap: 36px;
+  flex-wrap: wrap;
 }
 
 .social-link {
@@ -886,3 +887,59 @@ body {
       display: none;
     }
   }
+
+  @media (max-width: 768px) {
+
+    section {
+      padding-left: 24px !important;
+      padding-right: 24px !important;
+    }
+
+    .hero-content {
+      height: auto;
+      min-height: calc(100svh - 80px);
+      padding-bottom: 40px;
+    }
+
+    .stats {
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .benefits-grid {
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 48px;
+    }
+
+    .services-list {
+      gap: 80px;
+    }
+
+    .about-image img,
+    .faq-image img {
+      max-height: 380px;
+      object-fit: cover;
+    }
+
+    .testimonial {
+      min-width: 280px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .socials {
+      gap: 20px;
+    }
+
+    .social-link {
+      font-size: 12px;
+      letter-spacing: .14em;
+    }
+  }
+  @media (max-width: 480px) {
+    .socials {
+      row-gap: 16px;
+    }
+  }
+
+
