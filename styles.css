@@ -893,14 +893,14 @@ body {
 }
 
 /* Animation */
-/*@keyframes slideTestimonials {
+@keyframes slideTestimonials {
   from {
     transform: translateX(0);
   }
   to {
     transform: translateX(-50%);
   }
-}*/
+}
 
 @keyframes slideTestimonialsMobile {
   from { transform: translateX(0); }
@@ -919,9 +919,6 @@ body {
   }
 }
 
-
-
-/* Responsive */
 
 @media (max-width: 768px) {
   .scroll-indicator { display: none; }
@@ -953,166 +950,10 @@ body {
 
     .reveal-slide-left,
     .reveal-slide-right {
-      transform: translateY(20px);
+      /*transform: translateY(20px);*/
   }
+
 }
-
-
-
- /* @media (max-width: 768px) {
-  .stats {
-    gap: 24px;
-  }
-}
-
-  @media (max-width: 768px) {
-    .scroll-indicator {
-      display: none;
-    }
-  }
-
-  @media (max-width: 768px) {
-
-    .hero-content {
-      height: auto;
-      min-height: calc(100svh - 80px);
-      padding-bottom: 40px;
-    }
-
-    .stats {
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-
-    .benefits-grid {
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 48px;
-    }
-
-    .services-list {
-      gap: 80px;
-    }
-
-    .about-image img,
-    .faq-image img {
-      max-height: 380px;
-      object-fit: cover;
-    }
-
-    .testimonial {
-      min-width: 280px;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .socials {
-      gap: 20px;
-    }
-
-    .social-link {
-      font-size: 12px;
-      letter-spacing: .14em;
-    }
-  }
-  @media (max-width: 480px) {
-    .socials {
-      row-gap: 16px;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .testimonial-track {
-      gap: 40px;
-    }
-  }
-  @media (max-width: 768px) {
-    .stats,
-    .socials {
-      gap: 20px;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .benefit-card {
-      max-width: none;
-    }
-
-    .benefits-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-
-
-  @media (max-width: 768px) {
-    .services {
-      padding: 96px 20px;
-    }
-
-    .services-list {
-      gap: 72px;
-    }
-
-    .service-image {
-      border-radius: 20px;
-    }
-
-    .service-content h3 {
-      font-size: 26px;
-    }
-  }
-
-
-  @media (max-width: 768px) {
-    .about {
-      padding: 96px 20px;
-    }
-
-    .about-content {
-      max-width: 100%;
-    }
-
-    .about-impact strong {
-      font-size: 22px;
-    }
-  }
-
-
-  @media (max-width: 768px) {
-    .testimonial-track {
-      gap: 32px;
-    }
-
-    .testimonial {
-      min-width: 260px;
-      max-width: 260px;
-    }
-
-    .testimonial p {
-      font-size: 18px;
-    }
-  }
-
-
-  @media (max-width: 768px) {
-    .faq {
-      padding: 96px 20px;
-    }
-
-    .faq-question {
-      font-size: 16px;
-      gap: 20px;
-    }
-
-    .faq-item {
-      padding: 18px 0;
-    }
-  }
-
-@media (max-width: 768px) {
-  .benefits-grid {
-    grid-template-columns: 1fr;
-  }
-}*/
 
 
 
