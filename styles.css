@@ -893,13 +893,18 @@ body {
 }
 
 /* Animation */
-@keyframes slideTestimonials {
+/*@keyframes slideTestimonials {
   from {
     transform: translateX(0);
   }
   to {
     transform: translateX(-50%);
   }
+}*/
+
+@keyframes slideTestimonialsMobile {
+  from { transform: translateX(0); }
+  to { transform: translateX(-1000px); }
 }
 
 /* Responsive */
@@ -939,11 +944,20 @@ body {
     animation: slideTestimonialsMobile 40s linear infinite;
   }
 
+
   .testimonials,
   .faq,
   .services {
     overflow-x: hidden;
   }
+
+    .reveal-slide-left,
+    .reveal-slide-right {
+      transform: translateY(20px);
+  }
+}
+
+
 
  /* @media (max-width: 768px) {
   .stats {
