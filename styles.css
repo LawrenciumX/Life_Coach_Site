@@ -125,7 +125,7 @@ body {
 .hero-content {
   position: relative;
   z-index: 2;
-  height: calc(100svh - 100px);
+  height: calc(100vh - 100px);
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 36px;
