@@ -9,7 +9,14 @@
 }
 
 * { box-sizing: border-box; }
-html, body { height: 100%; /*overflow-x: hidden;*/ }
+html, body { height: 100%;  }
+section {
+  padding: 96px 20px;
+}
+
+h1, h2 {
+  word-wrap: break-word;
+}
 img {
   max-width: 100%;
 }
@@ -190,6 +197,32 @@ body {
   50% { transform: translateY(0); opacity: 1; }
   100% { transform: translateY(12px); opacity: 0; }
 }
+
+@media (max-width: 768px) {
+  .topbar {
+    padding: 20px;
+  }
+
+  .hero-content {
+    padding: 0 20px;
+    gap: 40px;
+  }
+
+  .hero-text h1 {
+    font-size: clamp(34px, 9vw, 44px);
+    line-height: 1.1;
+  }
+
+  .stats {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .stat span {
+    font-size: 26px;
+  }
+}
+
 
 /* ================================
    BENEFITS SECTION
@@ -959,6 +992,75 @@ body {
       gap: 20px;
     }
   }
+
+  @media (max-width: 768px) {
+    .benefit-card {
+      max-width: none;
+    }
+
+    .benefits-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 768px) {
+    .services {
+      padding: 96px 20px;
+    }
+
+    .services-list {
+      gap: 72px;
+    }
+
+    .service-image {
+      border-radius: 20px;
+    }
+
+    .service-content h3 {
+      font-size: 26px;
+    }
+  }
+  @media (max-width: 768px) {
+    .about {
+      padding: 96px 20px;
+    }
+
+    .about-content {
+      max-width: 100%;
+    }
+
+    .about-impact strong {
+      font-size: 22px;
+    }
+  }
+  @media (max-width: 768px) {
+    .testimonial-track {
+      gap: 32px;
+    }
+
+    .testimonial {
+      min-width: 260px;
+      max-width: 260px;
+    }
+
+    .testimonial p {
+      font-size: 18px;
+    }
+  }
+  @media (max-width: 768px) {
+    .faq {
+      padding: 96px 20px;
+    }
+
+    .faq-question {
+      font-size: 16px;
+      gap: 20px;
+    }
+
+    .faq-item {
+      padding: 18px 0;
+    }
+  }
+
 
 
 
