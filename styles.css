@@ -10,6 +10,12 @@
 
 * { box-sizing: border-box; }
 html, body { height: 100%; }
+img {
+  max-width: 100%;
+}
+/** {
+  outline: 1px solid red;
+}*/
 body {
   margin: 0;
   font-family: var(--sans);
@@ -824,7 +830,7 @@ body {
 .testimonial-track {
   display: flex;
   gap: 80px;
-  width: max-content;
+  width: /*max-content;*/fit-content;
   animation: slideTestimonials 60s linear infinite;
 }
 
@@ -890,10 +896,10 @@ body {
 
   @media (max-width: 768px) {
 
-    section {
+    /*section {
       padding-left: 24px !important;
       padding-right: 24px !important;
-    }
+    }*/
 
     .hero-content {
       height: auto;
@@ -941,5 +947,18 @@ body {
       row-gap: 16px;
     }
   }
+
+  @media (max-width: 768px) {
+    .testimonial-track {
+      gap: 40px;
+    }
+  }
+  @media (max-width: 768px) {
+    .stats,
+    .socials {
+      gap: 20px;
+    }
+  }
+
 
 
