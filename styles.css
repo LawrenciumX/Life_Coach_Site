@@ -9,7 +9,7 @@
 }
 
 * { box-sizing: border-box; }
-html, body { height: 100%; /*overflow-x: hidden;*/ scroll-behavior: smooth; }
+html, body { height: 100%; scroll-behavior: smooth; }
 section {
   padding: 96px 20px;
 }
@@ -20,9 +20,7 @@ h1, h2 {
 img {
   max-width: 100%;
 }
-/** {
-  outline: 1px solid red;
-}*/
+
 body {
   margin: 0;
   font-family: var(--sans);
@@ -205,7 +203,7 @@ body {
   }
 
   .hero-content {
-    padding: 0 20px;
+    /*padding: 0 20px;*/
     gap: 40px;
   }
 
@@ -942,18 +940,6 @@ body {
     animation: slideTestimonialsMobile 40s linear infinite;
   }
 
-
- /* .testimonials,
-  .faq,
-  .services {
-    overflow-x: hidden;
-  }*/
-
-    /*.reveal-slide-left,
-    .reveal-slide-right {
-      transform: translateY(20px);
-    }*/
-
   .reveal-slide-left,
   .reveal-slide-right {
     opacity: 0;
@@ -968,9 +954,6 @@ body {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
-
-
-
 }
 
 
