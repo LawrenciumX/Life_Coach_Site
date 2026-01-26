@@ -9,7 +9,7 @@
 }
 
 * { box-sizing: border-box; }
-html, body { height: 100%;overflow-x: hidden; scroll-behavior: smooth; }
+html, body { height: 100%; /*overflow-x: hidden;*/ scroll-behavior: smooth; }
 section {
   padding: 96px 20px;
 }
@@ -943,11 +943,11 @@ body {
   }
 
 
-  .testimonials,
+ /* .testimonials,
   .faq,
   .services {
     overflow-x: hidden;
-  }
+  }*/
 
     /*.reveal-slide-left,
     .reveal-slide-right {
