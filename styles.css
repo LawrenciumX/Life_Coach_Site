@@ -322,6 +322,7 @@ body {
   }
 }
 
+
 .benefit-index {
   font-size: 12px;
   letter-spacing: .25em;
@@ -916,7 +917,35 @@ body {
 
 
 /* Responsive */
-  @media (max-width: 768px) {
+
+@media (max-width: 768px) {
+  .scroll-indicator { display: none; }
+  .stats, .socials { gap: 20px; }
+  .benefits-grid { grid-template-columns: 1fr; }
+  .benefit-card { max-width: none; }
+  .services { padding: 96px 20px; }
+  .about { padding: 96px 20px; }
+  .faq { padding: 96px 20px; }
+}
+
+@media (max-width: 900px) {
+  .service-item {
+    gap: clamp(32px, 6vw, 48px);
+  }
+}
+
+@media (max-width: 768px) {
+  .testimonial-track {
+    animation: slideTestimonialsMobile 40s linear infinite;
+  }
+
+  .testimonials,
+  .faq,
+  .services {
+    overflow-x: hidden;
+  }
+
+ /* @media (max-width: 768px) {
   .stats {
     gap: 24px;
   }
@@ -1064,6 +1093,14 @@ body {
       padding: 18px 0;
     }
   }
+
+@media (max-width: 768px) {
+  .benefits-grid {
+    grid-template-columns: 1fr;
+  }
+}*/
+
+
 
 
 
