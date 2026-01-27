@@ -617,11 +617,16 @@ body {
 .booking-inner p {
   font-size: 15px;
   color: rgba(255,255,255,.6);
-  margin-bottom: 36px;
+  margin-bottom: 16px;
 }
 
 #booking {
  scroll-margin-top: 10px;
+}
+
+.section-eyebrow {
+  margin-top: 5px; /* adjust as needed */
+  display: inline-block;
 }
 
 /*@media (max-width: 768px) {
