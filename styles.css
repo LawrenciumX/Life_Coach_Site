@@ -629,6 +629,11 @@ body {
   font-size: 14px;
 }*/
 
+#booking:target .reveal {
+  opacity: 1;
+  transform: none;
+}
+
 
 /* ================================
    FAQ – MODERN + IMAGE-LED
@@ -1085,6 +1090,20 @@ body {
   .plan-card.featured {
     transform: none;
   }
+}
+
+@media (max-width: 768px) {
+
+  /* Disable hover border for ALL plans */
+  .plan-card:hover {
+    border-color: rgba(255,255,255,.12);
+  }
+
+  /* Allow ONLY Pro / featured plan */
+  .plan-card.featured {
+    border-color: rgba(255,122,90,.6);
+  }
+
 }
 
 
