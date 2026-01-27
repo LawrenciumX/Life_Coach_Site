@@ -609,6 +609,7 @@ body {
 }
 
 .booking-inner h2 {
+  margin-top: 10px;
   font-family: var(--serif);
   font-size: clamp(38px, 6vw, 56px);
   margin-bottom: 16px;
@@ -1093,7 +1094,6 @@ body {
   }
 
 }
-
 
 
 
