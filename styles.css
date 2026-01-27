@@ -965,15 +965,6 @@ body {
    PRICING / PLANS
 ================================ */
 
-#booking {
-  scroll-margin-top: 10px;
-}
-
-/*@media (max-width: 768px) {
-  #booking {
-    scroll-margin-top: 0px;
-  }
-}*/
 
 
 .plans {
