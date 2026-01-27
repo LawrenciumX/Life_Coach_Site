@@ -909,6 +909,7 @@ body {
   to { transform: translateX(-1000px); }
 }
 
+
 /* Responsive */
 @media (max-width: 768px) {
   .testimonial {
@@ -958,6 +959,134 @@ body {
     transform: translateY(0) scale(1);
   }
 }
+
+
+/* ================================
+   PRICING / PLANS
+================================ */
+
+.plans {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 80px;
+}
+
+.plan-card {
+  background: #000000;
+  color: #ffffff;
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,.19);
+  padding: 40px 32px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,.08);
+  transition: transform .4s ease, box-shadow .4s ease;
+}
+
+.plan-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 30px 80px rgba(0,0,0,.12);
+  border-color: rgba(255,122,90,.6);
+}
+
+/* Featured plan */
+.plan-card.featured {
+  transform: translateY(-20px);
+  box-shadow: 0 40px 100px rgba(0,0,0,.16);
+  border-color: rgba(255,122,90,.6);
+}
+
+/* Header */
+.plan-icon {
+  font-size: 34px;
+  margin-bottom: 14px;
+}
+
+.plan-header h3 {
+  font-family: var(--serif);
+  font-size: 26px;
+  margin-bottom: 6px;
+}
+
+.plan-sub {
+  font-size: 13px;
+  color: rgba(0,0,0,.5);
+}
+
+/* Features */
+.plan-features {
+  list-style: none;
+  padding: 0;
+  margin: 28px 0 32px;
+  text-align: left;
+}
+
+.plan-features li {
+  font-size: 15px;
+  margin-bottom: 12px;
+  position: relative;
+  padding-left: 22px;
+}
+
+.plan-features li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #ff7a5a;
+}
+
+.plan-features .muted {
+  opacity: .4;
+}
+
+/* Price */
+.plan-price {
+  margin-bottom: 28px;
+}
+
+.plan-price strong {
+  font-size: 42px;
+  color: #ff7a5a;
+}
+
+.plan-price span {
+  font-size: 15px;
+  color: rgba(0,0,0,.6);
+}
+
+/* Button */
+.plan-btn {
+  display: inline-block;
+  width: 100%;
+  padding: 14px 0;
+  border-radius: 999px;
+  background:  linear-gradient(135deg, #b36ad8, #ff7a5a);
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.plan-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(179,106,216,.4);
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 900px) {
+  .plans {
+    grid-template-columns: 1fr;
+  }
+
+  .plan-card.featured {
+    transform: none;
+  }
+}
+
 
 
 
