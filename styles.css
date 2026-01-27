@@ -603,7 +603,7 @@ body {
    BOOKING
 ================================ */
 .booking {
-  padding: 140px 36px;
+  padding: 100px 36px;
   background: linear-gradient(to bottom, #000, #050505);
   text-align: center;
 }
@@ -965,11 +965,22 @@ body {
    PRICING / PLANS
 ================================ */
 
+#booking {
+  scroll-margin-top: 20px;
+}
+
+/*@media (max-width: 768px) {
+  #booking {
+    scroll-margin-top: 0px;
+  }
+}*/
+
+
 .plans {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 32px;
-  margin-top: 80px;
+  margin-top: 48px;
 }
 
 .plan-card {
