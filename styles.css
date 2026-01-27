@@ -629,11 +629,6 @@ body {
   font-size: 14px;
 }*/
 
-#booking:target .reveal {
-  opacity: 1;
-  transform: none;
-}
-
 
 /* ================================
    FAQ – MODERN + IMAGE-LED
