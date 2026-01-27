@@ -603,7 +603,7 @@ body {
    BOOKING
 ================================ */
 .booking {
-  padding: 10px 36px;
+  padding: 5px 36px;
   background: linear-gradient(to bottom, #000, #050505);
   text-align: center;
 }
