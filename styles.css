@@ -9,7 +9,6 @@
 body[data-theme="dark"] {
   --page-bg: #000;
   --section-bg: #000;
-  --section-divider: rgba(255,255,255,.08);
   --text: rgba(255,255,255,.92);
   --muted: rgba(255,255,255,.65);
   --glass: rgba(255,255,255,.08);
@@ -23,7 +22,6 @@ body[data-theme="dark"] {
 body[data-theme="light"] {
   --page-bg: #f4f5f7;
   --section-bg: transparent;
-  --section-divider: transparent;
   --text: rgba(20,20,20,.92);
   --muted: rgba(20,20,20,.6);
   --glass: rgba(0,0,0,.05);
@@ -427,7 +425,7 @@ body {
 
 .services {
   padding: 160px 36px;
-  background: var(--section-divider);
+  background: var(--page-bg);
   /*background: linear-gradient(
           to bottom,
           var(--page-bg),
