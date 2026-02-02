@@ -9,6 +9,7 @@
 body[data-theme="dark"] {
   --page-bg: #000;
   --section-bg: #000;
+  --section-divider: rgba(255,255,255,.08);
   --text: rgba(255,255,255,.92);
   --muted: rgba(255,255,255,.65);
   --glass: rgba(255,255,255,.08);
@@ -20,8 +21,9 @@ body[data-theme="dark"] {
    LIGHT MODE
 ================================ */
 body[data-theme="light"] {
-  --page-bg: #f8f8f6;
+  --page-bg: #f4f5f7;
   --section-bg: transparent;
+  --section-divider: transparent;
   --text: rgba(20,20,20,.92);
   --muted: rgba(20,20,20,.6);
   --glass: rgba(0,0,0,.05);
@@ -425,7 +427,7 @@ body {
 
 .services {
   padding: 160px 36px;
-  background: var(--services-bg);
+  background: var(--section-divider);
   /*background: linear-gradient(
           to bottom,
           var(--page-bg),
@@ -440,7 +442,7 @@ body {
   left: 0;
   width: 100%;
   height: 1px;
-  background: rgba(255,255,255,.08);
+  background: var(--section-divider);
 }
 
 
@@ -507,7 +509,10 @@ body {
   object-fit: cover;
   transform: scale(1.1);
   transition: transform 1.6s cubic-bezier(.2,.8,.2,1);
+  will-change: transform;
+  backface-visibility: hidden;
 }
+
 
 .service-image.in-view img {
   transform: scale(1);
@@ -962,7 +967,7 @@ body {
   font-size: 13px;
   letter-spacing: .14em;
   text-transform: uppercase;
-  color: rgba(255,255,255,.6);
+  color: var(--text);
 }
 
 /* Animation */
