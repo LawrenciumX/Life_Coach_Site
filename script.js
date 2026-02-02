@@ -136,6 +136,23 @@ if (!isOpen) {
 });
 });
 
+const toggle = document.querySelector('.theme-toggle');
+const body = document.body;
+
+const savedTheme = localStorage.getItem('theme') || 'dark';
+body.setAttribute('data-theme', savedTheme);
+toggle.textContent = savedTheme === 'light' ? '☀︎' : '☾';
+
+toggle.addEventListener('click', () => {
+    const current = body.getAttribute('data-theme');
+const next = current === 'dark' ? 'light' : 'dark';
+
+body.setAttribute('data-theme', next);
+localStorage.setItem('theme', next);
+toggle.textContent = next === 'light' ? '☀︎' : '☾';
+});
+
+
 
 
 

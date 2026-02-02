@@ -1,15 +1,84 @@
 :root {
-  --text: rgba(255,255,255,.92);
-  --muted: rgba(255,255,255,.65);
-  --glass: rgba(255,255,255,.08);
-  --border: rgba(255,255,255,.14);
-
   --serif: "Playfair Display", serif;
   --sans: "Inter", system-ui, sans-serif;
 }
 
+/* ================================
+   DARK MODE (DEFAULT)
+================================ */
+body[data-theme="dark"] {
+  --page-bg: #000;
+  --section-bg: #000;
+  --text: rgba(255,255,255,.92);
+  --muted: rgba(255,255,255,.65);
+  --glass: rgba(255,255,255,.08);
+  --border: rgba(255,255,255,.14);
+}
+
+
+/* ================================
+   LIGHT MODE
+================================ */
+body[data-theme="light"] {
+  --page-bg: #f8f8f6;
+  --section-bg: transparent;
+  --text: rgba(20,20,20,.92);
+  --muted: rgba(20,20,20,.6);
+  --glass: rgba(0,0,0,.05);
+  --border: rgba(0,0,0,.12);
+}
+
+body {
+  margin: 0;
+  font-family: var(--sans);
+  color: var(--text);
+  background: var(--page-bg);
+}
+
+
 * { box-sizing: border-box; }
 html, body { height: 100%; scroll-behavior: smooth; }
+
+body[data-theme="dark"] .hero-overlay {
+  background: linear-gradient(
+          to bottom,
+          rgba(0,0,0,.55),
+          rgba(0,0,0,.35),
+          rgba(0,0,0,.8)
+  );
+}
+
+body[data-theme="light"] .hero-overlay {
+  background: linear-gradient(
+          to bottom,
+          rgba(255,255,255,.65),
+          rgba(255,255,255,.45),
+          rgba(255,255,255,.85)
+  );
+}
+
+body[data-theme="light"] .cta-btn {
+  color: #111;
+  border-color: rgba(0,0,0,.4);
+}
+
+body[data-theme="light"] .cta-btn:hover {
+  background: rgba(0,0,0,.05);
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 16px;
+  cursor: pointer;
+  opacity: .7;
+}
+
+.theme-toggle:hover {
+  opacity: 1;
+}
+
 section {
   padding: 96px 20px;
 }
@@ -25,7 +94,7 @@ body {
   margin: 0;
   font-family: var(--sans);
   color: var(--text);
-  background: #000;
+  background: var(--page-bg);
 }
 
 .hero {
@@ -243,10 +312,9 @@ body {
 .benefits {
   position: relative;
  /* padding: 140px 36px 160px;*/
-  background: #000;
+  background: var(--page-bg);
   width: 100%;
   padding: 180px 20px;
-  background: #000;
 }
 
 .benefits-inner {
@@ -264,7 +332,7 @@ body {
   font-size: 12px;
   letter-spacing: .28em;
   text-transform: uppercase;
-  color: rgba(255,255,255,.55);
+  color: var(--muted);
   margin-bottom: 14px;
 }
 
@@ -297,7 +365,7 @@ body {
 .benefit-card p {
   font-size: 15px;
   line-height: 1.7;
-  color: rgba(255,255,255,.65);
+  color: var(--muted);
   margin: 0;
 }
 
@@ -338,7 +406,7 @@ body {
 .benefit-index {
   font-size: 12px;
   letter-spacing: .25em;
-  color: rgba(255,255,255,.4);
+  color:  var(--muted);
   display: block;
   margin-bottom: 12px;
 }
@@ -357,12 +425,12 @@ body {
 
 .services {
   padding: 160px 36px;
-  /*background: #000;*/
-  background: linear-gradient(
+  background: var(--services-bg);
+  /*background: linear-gradient(
           to bottom,
-          #000,
+          var(--page-bg),
           #070707
-  );
+  );*/
 }
 
 .services::before {
@@ -391,7 +459,7 @@ body {
   font-size: 12px;
   letter-spacing: .28em;
   text-transform: uppercase;
-  color: rgba(255,255,255,.55);
+  color: var(--muted);
   margin-bottom: 14px;
 }
 
@@ -456,7 +524,7 @@ body {
 .service-content p {
   font-size: 16px;
   line-height: 1.7;
-  color: rgba(255,255,255,.65);
+  color: var(--muted);
   max-width: 420px;
   margin: 0;
 }
@@ -489,7 +557,7 @@ body {
 
 .about {
   padding: 160px 36px;
-  background: #000;
+  background: var(--page-bg);
 }
 
 .about-inner {
@@ -528,7 +596,7 @@ body {
   font-size: 14px;
   letter-spacing: .12em;
   text-transform: uppercase;
-  color: rgba(255,255,255,.6);
+  color: var(--text);
   margin-bottom: 28px;
 }
 
@@ -541,7 +609,7 @@ body {
 
 .about-credentials li {
   font-size: 15px;
-  color: rgba(255,255,255,.7);
+  color: var(--text);
   margin-bottom: 10px;
 }
 
@@ -549,14 +617,14 @@ body {
 .about-bio {
   font-size: 16px;
   line-height: 1.7;
-  color: rgba(255,255,255,.65);
+  color: var(--text);
   margin-bottom: 20px;
 }
 
 /* Impact */
 .about-impact {
   font-size: 15px;
-  color: rgba(255,255,255,.75);
+  color: var(--text);
 }
 
 .about-impact strong {
@@ -614,7 +682,8 @@ body {
 ================================ */
 .booking {
   padding: 5px 36px;
-  background: linear-gradient(to bottom, #000, #050505);
+  background:var(--page-bg);
+  /*background: linear-gradient(to bottom, var(--page-bg), #050505);*/
   text-align: center;
 }
 
@@ -627,7 +696,7 @@ body {
 
 .booking-inner p {
   font-size: 15px;
-  color: rgba(255,255,255,.6);
+  color: var(--text);
   margin-bottom: 16px;
 }
 
@@ -638,7 +707,7 @@ body {
 
 .faq {
   padding: 180px 0;
-  background: #000;
+  background: var(--page-bg);
 }
 
 .faq-content h2 {
@@ -692,7 +761,7 @@ body {
   width: 100%;
   background: none;
   border: none;
-  color: rgba(255,255,255,.9);
+  color: var(--text);
   font-size: 18px;
   display: flex;
   justify-content: space-between;
@@ -723,7 +792,7 @@ body {
   margin: 18px 0 0;
   font-size: 15px;
   line-height: 1.7;
-  color: rgba(255,255,255,.65);
+  color: var(--text);
 }
 
 
@@ -744,7 +813,7 @@ body {
 ================================ */
 .contact {
   padding: 140px 36px;
-  background: #000;
+  background: var(--page-bg);
   text-align: center;
 }
 
@@ -755,13 +824,13 @@ body {
 }
 
 .contact-inner p {
-  color: rgba(255,255,255,.6);
+  color: var(--text);
   margin-bottom: 24px;
 }
 
 .contact-inner a {
   font-size: 18px;
-  color: rgba(255,255,255,.85);
+  color: var(--text);
 }
 
 
@@ -772,7 +841,7 @@ body {
 .email-link {
   display: inline-block;
   font-size: 18px;
-  color: rgba(255,255,255,.9);
+  color: var(--text);
   margin-bottom: 40px;
 }
 
@@ -793,7 +862,7 @@ body {
   font-size: 13px;
   letter-spacing: .18em;
   text-transform: uppercase;
-  color: rgba(255,255,255,.7);
+  color: var(--text);
   padding-bottom: 6px;
   transition: color .25s ease;
   text-decoration: none;
@@ -807,7 +876,7 @@ body {
   bottom: 0;
   width: 100%;
   height: 1px;
-  background: rgba(255,255,255,.9);
+  background: var(--text);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform .35s cubic-bezier(.4,0,.2,1);
@@ -815,7 +884,7 @@ body {
 
 /* hover state */
 .social-link:hover {
-  color: rgba(255,255,255,.95);
+  color: var(--text);
 }
 
 .social-link:hover::after {
@@ -825,7 +894,7 @@ body {
 
 /* Hover effect */
 .social-link:hover {
-  color: rgba(255,255,255,.95);
+  color: var(--text);
 }
 
 
@@ -835,7 +904,7 @@ body {
 
 .testimonials {
   padding: 160px 0;
-  background: #000;
+  background: var(--page-bg);
   overflow: hidden;
 }
 
@@ -977,8 +1046,8 @@ body {
 }
 
 .plan-card {
-  background: #000000;
-  color: #ffffff;
+  background: var(--page-bg);
+  color: var(--text);
   border-radius: 22px;
   border: 1px solid rgba(255,255,255,.19);
   padding: 40px 32px;
@@ -1014,7 +1083,7 @@ body {
 
 .plan-sub {
   font-size: 13px;
-  color: rgba(0,0,0,.5);
+  color: var(--text);
 }
 
 /* Features */
@@ -1055,7 +1124,7 @@ body {
 
 .plan-price span {
   font-size: 15px;
-  color: rgba(0,0,0,.6);
+  color: var(--text);
 }
 
 /* Button */
