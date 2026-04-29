@@ -189,6 +189,39 @@ setInterval(() => {
 }, 9000);
 
 
+// Mobile tab navigation
+document.querySelectorAll(".mobile-tabs a").forEach(link => {
+    link.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    const target = document.querySelector(this.getAttribute("href"));
+
+    if (target) {
+        target.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    }
+});
+});
+
+const backToTop = document.querySelector(".back-to-top");
+
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+    backToTop.classList.add("visible");
+} else {
+    backToTop.classList.remove("visible");
+}
+});
+
+backToTop.addEventListener("click", () => {
+    window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+});
+});
+
 
 
 
