@@ -136,7 +136,7 @@ if (!isOpen) {
 });
 });
 
-const toggle = document.querySelector('.theme-toggle');
+/*const toggle = document.querySelector('.theme-toggle');
 const body = document.body;
 
 const savedTheme = localStorage.getItem('theme') || 'dark';
@@ -150,7 +150,7 @@ const next = current === 'dark' ? 'light' : 'dark';
 body.setAttribute('data-theme', next);
 localStorage.setItem('theme', next);
 toggle.textContent = next === 'light' ? '☀︎' : '☾';
-});
+});*/
 
 
 let currentSlide = 0;
