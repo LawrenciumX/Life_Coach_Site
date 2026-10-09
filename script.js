@@ -233,7 +233,7 @@ backToTop.addEventListener("click", () => {
 // Discovery-call modal. Set the real business number below to enable WhatsApp and calling.
 // Include the country code and digits only, for example "15551234567".
 
-const discoveryBusinessPhone = "18259355984";
+const discoveryBusinessPhone = "18433729675";
 const discoveryDialog = document.getElementById("discoveryDialog");
 const discoveryWhatsapp = document.getElementById("discoveryWhatsapp");
 const discoveryPhone = document.getElementById("discoveryPhone");
