@@ -228,3 +228,50 @@ backToTop.addEventListener("click", () => {
 
 
 
+
+
+// Discovery-call modal. Set the real business number below to enable WhatsApp and calling.
+// Include the country code and digits only, for example "15551234567".
+
+const discoveryBusinessPhone = "18259355984";
+const discoveryDialog = document.getElementById("discoveryDialog");
+const discoveryWhatsapp = document.getElementById("discoveryWhatsapp");
+const discoveryPhone = document.getElementById("discoveryPhone");
+const discoveryPhoneLabel = document.getElementById("discoveryPhoneLabel");
+const discoveryPhonePending = document.getElementById("discoveryPhonePending");
+const formattedPhone = discoveryBusinessPhone.replace(
+    /^1(\d{3})(\d{3})(\d{4})$/,
+    "+1 ($1) $2-$3"
+);
+let discoveryReturnFocus = null;
+
+if (discoveryDialog) {
+  if (/^[1-9]\d{6,14}$/.test(discoveryBusinessPhone)) {
+    const message = encodeURIComponent("Hello BloomPath! I'd like to book a discovery call. Please let me know the next steps.");
+    discoveryWhatsapp.href = `https://wa.me/${discoveryBusinessPhone}?text=${message}`;
+    discoveryPhone.href = `tel:+${discoveryBusinessPhone}`;
+
+    discoveryPhoneLabel.textContent = formattedPhone;
+    discoveryWhatsapp.hidden = false;
+    discoveryPhone.hidden = false;
+    discoveryPhonePending.hidden = true;
+  }
+
+  document.querySelectorAll("[data-open-discovery]").forEach(button => {
+    button.addEventListener("click", () => {
+      discoveryReturnFocus = button;
+      discoveryDialog.showModal();
+      document.body.classList.add("discovery-open");
+    });
+  });
+
+  const closeDiscovery = () => discoveryDialog.close();
+  discoveryDialog.querySelector("[data-close-discovery]").addEventListener("click", closeDiscovery);
+  discoveryDialog.addEventListener("click", event => {
+    if (event.target === discoveryDialog) closeDiscovery();
+  });
+  discoveryDialog.addEventListener("close", () => {
+    document.body.classList.remove("discovery-open");
+    discoveryReturnFocus?.focus();
+  });
+}

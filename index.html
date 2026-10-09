@@ -21,6 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
   <link rel="icon" type="image/png" href="images/favicon_cropped.png" />
 
@@ -74,6 +75,9 @@
     <div class="hero-text">
       <span class="tagline">Life Coaching & Healthy Relationships</span>
       <h1>Clarity begins within.</h1>
+      <div class="hero-actions">
+        <button type="button" class="discovery-btn" data-open-discovery>Book a Free Discovery Call <span aria-hidden="true">↗</span></button>
+      </div>
     </div>
 
     <!-- Stats -->
@@ -231,6 +235,8 @@
 
     <!--<span class="section-eyebrow">Plans</span>-->
     <h2>Begin your reset</h2>
+    <p class="booking-lead">Not sure which plan is right for you?</p>
+    <button type="button" class="discovery-btn discovery-btn-outline" data-open-discovery>Book a Free Discovery Call <span aria-hidden="true">↗</span></button>
 
     <div class="plans">
 
@@ -331,7 +337,7 @@
         <!-- Testimonial -->
         <div class="testimonial">
           <p>
-            “Working with Sarah changed how I approach both my career and my inner life.”
+            “Working with Blandine changed how I approach both my career and my inner life.”
           </p>
           <span>— Founder, Tech Startup</span>
         </div>
@@ -360,7 +366,7 @@
         <!-- Duplicate for seamless loop -->
         <div class="testimonial">
           <p>
-            “Working with Sarah changed how I approach both my career and my inner life.”
+            “Working with Blandine changed how I approach both my career and my inner life.”
           </p>
           <span>— Founder, Tech Startup</span>
         </div>
@@ -420,6 +426,38 @@
           </div>
         </div>
 
+
+        <div class="faq-item reveal-slide-right delay-4">
+          <button class="faq-question">
+            <span>How do I schedule a session?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Simply click any booking button to be redirected to Calendly, where you can select your preferred date and time, complete your payment securely through PayPal, and receive an instant booking confirmation.</p>
+          </div>
+        </div>
+
+
+        <div class="faq-item reveal-slide-right delay-5">
+          <button class="faq-question">
+            <span>Are the sessions conducted virtually?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes, all sessions are held virtually via Google Meet or Zoom, providing a private, secure, and convenient environment where you can connect with your coach from anywhere in the world.</p>
+          </div>
+        </div>
+
+        <div class="faq-item reveal-slide-right delay-6">
+          <button class="faq-question">
+            <span>Do you offer couples coaching?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes, I offer 75-minute intensive coaching sessions for couples</p>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -442,6 +480,35 @@
     </div>
   </div>
 </section>
+
+
+<!-- Discovery call: native dialog provides accessible modal focus behavior -->
+<dialog class="discovery-dialog" id="discoveryDialog" aria-labelledby="discoveryTitle" aria-describedby="discoveryDescription">
+  <div class="discovery-dialog-inner">
+    <div class="discovery-modal-header">
+      <span class="discovery-eyebrow">BLOOMPATH · LET'S CONNECT</span>
+      <button type="button" class="discovery-close" data-close-discovery aria-label="Close discovery call options">&times;</button>
+    </div>
+    <h2 id="discoveryTitle">Let's begin with a conversation.</h2>
+    <p id="discoveryDescription" class="discovery-description">Wondering if coaching is right for you? Choose your preferred way to reach out about an introductory call.</p>
+    <div class="discovery-options">
+      <a class="discovery-option" href="mailto:bloompathelevate@gmail.com?subject=BloomPath%20Discovery%20Call%20Request&amp;body=Hello%20BloomPath%2C%0A%0AI%27d%20like%20to%20request%20a%20discovery%20call.%20Please%20let%20me%20know%20the%20next%20steps.%0A%0AThank%20you!">
+        <span class="discovery-option-icon" aria-hidden="true">✉</span><span class="discovery-option-copy"><strong>Send an email</strong><small>bloompathelevate@gmail.com</small></span><span aria-hidden="true">↗</span>
+      </a>
+      <a class="discovery-option" id="discoveryWhatsapp" href="#" target="_blank" rel="noopener noreferrer" hidden>
+        <span class="discovery-option-icon whatsapp-icon"
+              aria-hidden="true">
+    <i class="fa-brands fa-whatsapp"></i>
+</span><span class="discovery-option-copy"><strong>Chat on WhatsApp</strong><small>Send us a quick message</small></span><span aria-hidden="true">↗</span>
+      </a>
+      <a class="discovery-option" id="discoveryPhone" href="#" hidden>
+        <span class="discovery-option-icon" aria-hidden="true">☎</span><span class="discovery-option-copy"><strong>Call us</strong><small id="discoveryPhoneLabel">Tap to call</small></span><span aria-hidden="true">↗</span>
+      </a>
+      <p class="discovery-phone-pending" id="discoveryPhonePending">WhatsApp and phone booking will be available once a contact number is added.</p>
+    </div>
+    <p class="discovery-footnote">No pressure, just a first conversation.</p>
+  </div>
+</dialog>
 
 <script src="script.js"></script>
 <script type="application/ld+json">
