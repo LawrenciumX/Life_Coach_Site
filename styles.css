@@ -769,7 +769,7 @@ body {
   display: grid;
   grid-template-columns: 1.3fr 1fr; /* image dominates */
   gap: clamp(60px, 8vw, 120px);
-  align-items: start;
+  align-items: stretch;
 }
 
 /* Image */
@@ -1386,3 +1386,145 @@ body {
 
 
 
+/* ================================
+  Discovery call: responsive CTA and native dialog
+================================ */
+
+.hero-actions { display:flex; flex-wrap:wrap; align-items:center; gap:16px; margin-top:28px; }
+/*
+.discovery-btn { display:inline-flex; gap:15px; align-items:center; justify-content:center; min-height:48px; padding:13px 22px; border:1px solid #9b59b6; border-radius:999px; background:linear-gradient(135deg,#9b59b6,#bd648f); color:#fff; font:500 13px/1.3 var(--sans); cursor:pointer; text-align:center; box-shadow:0 9px 24px rgba(101,49,121,.16); transition:transform .2s ease,box-shadow .2s ease; }
+*/
+
+.discovery-btn {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  display: inline-flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 48px;
+  padding: 13px 22px;
+
+  border: 1px solid #9B59B6;
+  border-radius: 999px;
+
+  background: linear-gradient(
+          135deg, #9B59B6, #ff7a5a
+  );
+
+  color: #fff;
+  font: 500 13px/1.3 var(--sans);
+  cursor: pointer;
+  text-align: center;
+
+  box-shadow: 0 9px 24px rgba(183,127,139,.16);
+
+  transition:
+          transform .3s ease,
+          box-shadow .3s ease;
+}
+
+/* Luxury light sweep */
+.discovery-btn::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+
+  top: -70%;
+  left: -75%;
+
+  width: 34%;
+  height: 240%;
+
+  transform: rotate(26deg);
+
+  background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255,255,255,.07),
+          rgba(255,255,255,.53),
+          rgba(255,255,255,.08),
+          transparent
+  );
+
+  animation: luxuryShimmer 4.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Shimmer animation */
+@keyframes luxuryShimmer {
+  0%, 15% {
+    left: -75%;
+  }
+
+  44%, 100% {
+    left: 150%;
+  }
+}
+
+/* Hover effect */
+.discovery-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+          0 12px 30px rgba(183,127,139,.28);
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .discovery-btn::before {
+    animation: none;
+  }
+}
+.whatsapp-icon {
+  background: #E8F5E9;
+  color: #25D366;
+  font-size: 24px;
+}
+
+.discovery-btn:hover { transform:translateY(-2px); box-shadow:0 12px 30px rgba(101,49,121,.25); }
+.discovery-btn:focus-visible,.hero-services-link:focus-visible,.discovery-close:focus-visible,.discovery-option:focus-visible { outline:3px solid #8b4bad; outline-offset:4px; }
+.hero-services-link { color:var(--text); font:500 13px var(--sans); text-decoration:none; border-bottom:1px solid currentColor; padding:8px 0; }
+.booking-lead { margin:0 auto 17px; }
+.discovery-btn-outline { background:transparent; color:#7b3999; box-shadow:none; }
+.discovery-dialog { width:min(100% - 32px,520px); max-height:min(90dvh,740px); padding:0; border:1px solid rgba(0,0,0,.09); border-radius:26px; background:#f4f1ec; color:#222; box-shadow:0 24px 90px rgba(16,14,23,.25); overflow-y:auto; overscroll-behavior:contain; }
+.discovery-dialog::backdrop { background:rgba(14,12,20,.54); backdrop-filter:blur(5px); }
+.discovery-dialog-inner { padding:clamp(23px,5vw,38px); }
+.discovery-modal-header { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:20px; }
+.discovery-eyebrow { font-size:10px; letter-spacing:.19em; color:#796b7c; font-weight:600; }
+.discovery-close { display:grid; place-items:center; height:42px; width:42px; background:#e8e1e8; border:0; border-radius:50%; font-size:25px; color:#49364e; cursor:pointer; flex:none; }
+.discovery-dialog h2 { font:600 clamp(29px,5vw,40px)/1.15 var(--serif); margin:0 0 15px; }
+.discovery-description { font-size:14px; line-height:1.7; color:#645e64; margin:0 0 25px; }
+.discovery-options { display:grid; gap:11px; }
+.discovery-option { display:flex; gap:13px; align-items:center; min-height:76px; padding:14px 15px; background:#fff; border:1px solid #e8e0e8; border-radius:16px; text-decoration:none; color:#242024; transition:border-color .2s,transform .2s; }
+.discovery-option:hover { border-color:#9b59b6; transform:translateY(-1px); }
+.discovery-option-icon { display:grid; place-items:center; flex:none; width:43px; height:43px; border-radius:13px; background:#f4e9f6; color:#8b4bad; font-size:22px; }
+.discovery-option-copy { display:grid; gap:5px; flex:1; min-width:0; }
+.discovery-option-copy strong { font-size:14px; font-weight:600; }
+.discovery-option-copy small { font-size:12px; color:#756d75; overflow-wrap:anywhere; }
+.discovery-phone-pending { margin:4px 2px 0; color:#756d75; font-size:12px; line-height:1.5; }
+.discovery-footnote { color:#827782; font-size:12px; text-align:center; margin:22px 0 0; }
+body.discovery-open { overflow:hidden; }
+@media(max-width:768px) {
+ .hero-content { padding:0 20px; gap:28px; }
+ .hero-actions { margin-top:21px; gap:12px; }
+ .hero-actions .discovery-btn { max-width:100%; }
+ .booking { padding:65px 20px 55px; }
+ .discovery-dialog { width:calc(100% - 24px); max-height:calc(100dvh - 24px); border-radius:20px; }
+ .discovery-dialog-inner { padding:22px 18px; }
+ .discovery-option { min-height:72px; }
+}
+@media(max-width:420px) {
+ .hero-actions { align-items:stretch; flex-direction:column; }
+ .hero-actions .discovery-btn { width:100%; }
+ .hero-services-link { align-self:flex-start; }
+ .hero-content { gap:20px; }
+ .stats { padding-bottom:22px; }
+ .discovery-dialog h2 { font-size:30px; }
+}
+@media(prefers-reduced-motion:reduce) { .discovery-btn,.discovery-option { transition:none; } }
+/* Keep unconfigured contact channels genuinely hidden. */
+.discovery-dialog [hidden] { display:none !important; }
