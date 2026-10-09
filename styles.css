@@ -1528,3 +1528,125 @@ body.discovery-open { overflow:hidden; }
 @media(prefers-reduced-motion:reduce) { .discovery-btn,.discovery-option { transition:none; } }
 /* Keep unconfigured contact channels genuinely hidden. */
 .discovery-dialog [hidden] { display:none !important; }
+
+
+/* MOBILE NAVIGATION FIX */
+
+.mobile-menu-toggle {
+  display: none;
+}
+
+@media (max-width: 768px) {
+
+  .topbar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 20px;
+    z-index: 50;
+  }
+
+  .brand {
+    margin-right: auto;
+    font-size: 20px;
+  }
+
+  .hero-tabs {
+    display: none;
+  }
+
+  .cta-btn {
+    margin-left: 0;
+    padding: 10px 14px;
+    white-space: nowrap;
+    font-size: 12px;
+  }
+
+  /* Hamburger */
+  .mobile-menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .mobile-menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+  }
+
+  /* Hidden by default */
+  .mobile-tabs {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 12px;
+    right: 12px;
+
+    padding: 24px;
+    flex-direction: column;
+    gap: 18px;
+
+    background: #ece9e4;
+    border: 1px solid rgba(0,0,0,.08);
+    border-radius: 18px;
+
+    box-shadow: 0 14px 35px rgba(0,0,0,.12);
+    z-index: 100;
+  }
+
+  /* Show when menu is opened */
+  .mobile-tabs.is-open {
+    display: flex;
+  }
+
+  .mobile-tabs a {
+    font-size: 13px;
+    letter-spacing: .12em;
+    padding: 7px 0;
+  }
+
+  /* Prevent hero content crowding */
+  .hero-content {
+    min-height: calc(100svh - 90px);
+    justify-content: flex-end;
+    gap: 30px;
+    padding: 50px 20px 60px;
+  }
+
+  .hero-text h1 {
+    font-size: clamp(34px, 9vw, 44px);
+  }
+
+  .hero-actions {
+    margin-top: 24px;
+  }
+
+  .hero-actions .discovery-btn {
+    width: auto;
+    max-width: 100%;
+    padding: 14px 20px;
+  }
+
+  .stats {
+    gap: 20px;
+    padding-bottom: 0;
+  }
+}
+
+
+
+
