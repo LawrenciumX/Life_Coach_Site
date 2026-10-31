@@ -22,6 +22,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@29.5.8/dist/css/intlTelInput.css">
 
   <link rel="icon" type="image/png" href="images/favicon_cropped.png" />
 
@@ -245,12 +246,14 @@
 
     <!--<span class="section-eyebrow">Plans</span>-->
     <h2>Begin your reset</h2>
-    <p class="booking-lead">Not sure which plan is right for you?</p>
+   <!-- <p class="booking-lead">Meaningful conversations to help you find clarity,
+  build healthier relationships, manage life's challenges,
+  and grow with purpose.</p>-->
     <button type="button" class="discovery-btn discovery-btn-outline" data-open-discovery>Book a Free Discovery Call <span aria-hidden="true">↗</span></button>
 
-    <div class="plans">
+    <!--<div class="plans">
 
-      <!-- Base Plan -->
+      &lt;!&ndash; Base Plan &ndash;&gt;
       <div class="plan-card">
         <div class="plan-header">
           <div class="plan-icon">🧠</div>
@@ -276,7 +279,7 @@
         <a href="https://calendly.com/bloompathelevate/meeting-session?" target="_blank" class="plan-btn">Book a session</a>
       </div>
 
-      <!-- Pro Plan (featured) -->
+      &lt;!&ndash; Pro Plan (featured) &ndash;&gt;
       <div class="plan-card featured">
         <div class="plan-header">
           <div class="plan-icon">🔒</div>
@@ -302,7 +305,7 @@
         <a href="https://calendly.com/bloompathelevate/meeting-session?" target="_blank" class="plan-btn">Book a session</a>
       </div>
 
-      <!-- Elite Plan -->
+      &lt;!&ndash; Elite Plan &ndash;&gt;
       <div class="plan-card">
         <div class="plan-header">
           <div class="plan-icon">💎</div>
@@ -329,7 +332,61 @@
         <a href="https://calendly.com/bloompathelevate/meeting-session?" target="_blank" class="plan-btn">Book a session</a>
       </div>
 
+    </div>-->
+
+    <div class="topics-intro">
+      <h3 id="topics-title" class="topics-title">
+        What We Can Explore Together
+      </h3>
+      <p class="topics-description">
+        Every journey is different. Explore the areas
+        where you'd like to grow.
+      </p>
     </div>
+    <div class="topics" aria-label="Coaching topics">
+
+      <article class="topic-card">
+    <span class="topic-icon premium-icon" aria-hidden="true">
+      <i class="fa-solid fa-briefcase"></i>
+    </span>
+        <h3>Career &amp; Purpose</h3>
+        <p>Navigate career decisions, set meaningful goals, and build confidence in your next steps.</p>
+      </article>
+
+      <article class="topic-card">
+    <span class="topic-icon premium-icon" aria-hidden="true">
+      <i class="fa-solid fa-heart"></i>
+    </span>
+        <h3>Relationships</h3>
+        <p>Strengthen communication, establish healthy boundaries, and nurture meaningful connections.</p>
+      </article>
+
+      <article class="topic-card">
+    <span class="topic-icon premium-icon" aria-hidden="true">
+      <i class="fa-solid fa-spa"></i>
+    </span>
+        <h3>Stress Management</h3>
+        <p>Explore practical ways to manage pressure, find balance, and make room for rest.</p>
+      </article>
+
+      <article class="topic-card">
+    <span class="topic-icon premium-icon" aria-hidden="true">
+      <i class="fa-solid fa-seedling"></i>
+    </span>
+        <h3>Mindset &amp; Personal Growth</h3>
+        <p>Create supportive routines, strengthen self-discipline, and make lasting positive changes.</p>
+      </article>
+
+      <article class="topic-card">
+    <span class="topic-icon premium-icon" aria-hidden="true">
+      <i class="fa-solid fa-shield-heart"></i>
+    </span>
+        <h3>Spirituality &amp; Inner Growth</h3>
+        <p>Reflect on your values, sense of purpose, and spiritual well-being at your own pace.</p>
+      </article>
+
+    </div>
+
   </div>
 </section>
 
@@ -493,7 +550,316 @@
 
 
 <!-- Discovery call: native dialog provides accessible modal focus behavior -->
-<dialog class="discovery-dialog" id="discoveryDialog" aria-labelledby="discoveryTitle" aria-describedby="discoveryDescription">
+
+<!-- ===================================
+     DISCOVERY CALL MODAL
+=================================== -->
+
+<dialog
+        class="discovery-dialog"
+        id="discoveryDialog"
+        aria-labelledby="discoveryTitle"
+        aria-describedby="discoveryDescription"
+>
+  <div class="discovery-dialog-inner">
+
+    <!-- Modal Header -->
+    <div class="discovery-modal-header">
+      <span class="discovery-eyebrow">
+        BLOOMPATH · LET'S CONNECT
+      </span>
+
+      <button
+              type="button"
+              class="discovery-close"
+              data-close-discovery
+              aria-label="Close discovery call options"
+      >
+        &times;
+      </button>
+    </div>
+
+    <!-- Dynamic Title -->
+    <h2 id="discoveryTitle">
+      Let's begin with a conversation.
+    </h2>
+
+    <p
+            id="discoveryDescription"
+            class="discovery-description"
+    >
+      Tell us a little about yourself so we can
+      personalize your discovery call request.
+    </p>
+
+
+    <!-- =========================
+         STEP 1: VISITOR DETAILS
+    ========================= -->
+
+    <div id="discoveryStep1">
+
+      <form id="discoveryForm">
+
+        <div class="discovery-fields">
+
+          <!-- Full Name -->
+          <div class="discovery-field">
+            <label for="discoveryName">
+              Full Name
+            </label>
+
+            <input
+                    type="text"
+                    id="discoveryName"
+                    name="fullName"
+                    placeholder="Enter your full name"
+                    autocomplete="name"
+                    required
+            >
+          </div>
+
+          <!-- Coaching Topic -->
+          <div class="discovery-field">
+            <label for="discoveryTopic">
+              What would you like to discuss?
+            </label>
+
+            <select
+                    id="discoveryTopic"
+                    name="coachingTopic"
+                    required
+            >
+              <option value="" disabled selected>
+                Select a coaching topic
+              </option>
+
+              <option value="Career &amp; Purpose">
+                Career &amp; Purpose
+              </option>
+
+              <option value="Relationships">
+                Relationships
+              </option>
+
+              <option value="Stress Management">
+                Stress Management
+              </option>
+
+              <option value="Mindset &amp; Personal Growth">
+                Mindset &amp; Personal Growth
+              </option>
+
+              <option value="Spirituality &amp; Inner Growth">
+                Spirituality &amp; Inner Growth
+              </option>
+
+              <option value="Other">
+                Other
+              </option>
+            </select>
+          </div>
+
+          <!-- Custom Topic -->
+          <div
+                  class="discovery-field"
+                  id="discoveryOtherWrap"
+                  hidden
+          >
+            <label for="discoveryOther">
+              Tell us what you'd like to discuss
+            </label>
+
+            <input
+                    type="text"
+                    id="discoveryOther"
+                    name="otherTopic"
+                    placeholder="Enter your preferred topic"
+            >
+          </div>
+
+          <!-- Email Address -->
+          <div class="discovery-field">
+            <label for="discoveryEmailInput">
+              Email Address
+            </label>
+
+            <input
+                    type="email"
+                    id="discoveryEmailInput"
+                    name="email"
+                    placeholder="you@example.com"
+                    autocomplete="email"
+                    required
+            >
+          </div>
+
+          <!-- Phone Number -->
+          <div class="discovery-field">
+            <label for="discoveryPhoneInput">
+              Phone Number
+            </label>
+
+            <input
+                    type="tel"
+                    id="discoveryPhoneInput"
+                    name="phone"
+                    autocomplete="tel"
+                    required
+            >
+          </div>
+
+        </div>
+
+        <!-- Next Button -->
+        <button
+                type="submit"
+                class="discovery-next"
+        >
+          Next
+          <span aria-hidden="true">→</span>
+        </button>
+
+        <p class="discovery-form-note">
+          Your details are used to prepare your message.
+          Nothing is sent automatically.
+        </p>
+
+      </form>
+
+    </div>
+
+
+    <!-- =========================
+         STEP 2: CONTACT OPTIONS
+    ========================= -->
+
+    <div id="discoveryStep2" hidden>
+
+      <!-- Selected Topic Summary -->
+      <div
+              class="discovery-summary"
+              id="discoverySummary"
+              aria-live="polite"
+      ></div>
+
+      <div class="discovery-options">
+
+        <!-- Email Option -->
+        <a
+                class="discovery-option"
+                id="discoveryEmail"
+                href="mailto:bloompathelevate@gmail.com"
+        >
+          <span
+                  class="discovery-option-icon"
+                  aria-hidden="true"
+          >
+            ✉
+          </span>
+
+          <span class="discovery-option-copy">
+            <strong>Send an email</strong>
+            <small>
+              bloompathelevate@gmail.com
+            </small>
+          </span>
+
+          <span aria-hidden="true">↗</span>
+        </a>
+
+
+        <!-- WhatsApp Option -->
+        <a
+                class="discovery-option"
+                id="discoveryWhatsapp"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                hidden
+        >
+          <span
+                  class="discovery-option-icon whatsapp-icon"
+                  aria-hidden="true"
+          >
+            <i class="fa-brands fa-whatsapp"></i>
+          </span>
+
+          <span class="discovery-option-copy">
+            <strong>Chat on WhatsApp</strong>
+            <small>
+              Send your prepared message
+            </small>
+          </span>
+
+          <span aria-hidden="true">↗</span>
+        </a>
+
+
+        <!-- Phone Option -->
+        <a
+                class="discovery-option"
+                id="discoveryPhone"
+                href="#"
+                hidden
+        >
+          <span
+                  class="discovery-option-icon"
+                  aria-hidden="true"
+          >
+            ☎
+          </span>
+
+          <span class="discovery-option-copy">
+            <strong>Call us</strong>
+            <small id="discoveryPhoneLabel">
+              Tap to call
+            </small>
+          </span>
+
+          <span aria-hidden="true">↗</span>
+        </a>
+
+
+        <!-- Unavailable Contact Message -->
+        <p
+                class="discovery-phone-pending"
+                id="discoveryPhonePending"
+                hidden
+        >
+          WhatsApp and calling are currently unavailable.
+        </p>
+
+      </div>
+
+
+      <!-- Back Button -->
+      <button
+              type="button"
+              class="discovery-back"
+              id="discoveryBack"
+      >
+        ← Back to your details
+      </button>
+
+
+      <!-- Footnote -->
+      <p class="discovery-footnote">
+        Your messaging app will open with a prepared draft.
+        Please review and send.
+      </p>
+
+    </div>
+    <!-- END STEP 2 -->
+
+  </div>
+  <!-- END MODAL INNER -->
+
+</dialog>
+<!-- END DISCOVERY MODAL -->
+
+
+<!--<dialog class="discovery-dialog" id="discoveryDialog" aria-labelledby="discoveryTitle" aria-describedby="discoveryDescription">
   <div class="discovery-dialog-inner">
     <div class="discovery-modal-header">
       <span class="discovery-eyebrow">BLOOMPATH · LET'S CONNECT</span>
@@ -518,8 +884,10 @@
     </div>
     <p class="discovery-footnote">No pressure, just a first conversation.</p>
   </div>
-</dialog>
+</dialog>-->
 
+
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@29.5.8/dist/js/intlTelInput.min.js"></script>
 <script src="script.js"></script>
 <script type="application/ld+json">
 {

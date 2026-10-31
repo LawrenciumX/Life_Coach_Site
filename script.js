@@ -233,7 +233,7 @@ backToTop.addEventListener("click", () => {
 // Discovery-call modal. Set the real business number below to enable WhatsApp and calling.
 // Include the country code and digits only, for example "15551234567".
 
-const discoveryBusinessPhone = "18433729675";
+/*const discoveryBusinessPhone = "18433729675";
 const discoveryDialog = document.getElementById("discoveryDialog");
 const discoveryWhatsapp = document.getElementById("discoveryWhatsapp");
 const discoveryPhone = document.getElementById("discoveryPhone");
@@ -274,7 +274,385 @@ if (discoveryDialog) {
     document.body.classList.remove("discovery-open");
     discoveryReturnFocus?.focus();
   });
+}*/
+
+
+// ====================================
+// DISCOVERY CALL - TWO STEP FORM
+// ====================================
+
+const discoveryBusinessPhone = "18433729675";
+
+const discoveryDialog =
+    document.getElementById("discoveryDialog");
+
+const discoveryForm =
+    document.getElementById("discoveryForm");
+
+const discoveryStep1 =
+    document.getElementById("discoveryStep1");
+
+const discoveryStep2 =
+    document.getElementById("discoveryStep2");
+
+const discoveryTopic =
+    document.getElementById("discoveryTopic");
+
+const discoveryOtherWrap =
+    document.getElementById("discoveryOtherWrap");
+
+const discoveryOther =
+    document.getElementById("discoveryOther");
+
+const discoveryEmail =
+    document.getElementById("discoveryEmail");
+
+const discoveryWhatsapp =
+    document.getElementById("discoveryWhatsapp");
+
+const discoveryPhone =
+    document.getElementById("discoveryPhone");
+
+const discoveryPhoneLabel =
+    document.getElementById("discoveryPhoneLabel");
+
+const discoveryPhonePending =
+    document.getElementById("discoveryPhonePending");
+
+let discoveryReturnFocus = null;
+
+if (discoveryDialog && discoveryForm) {
+
+    const title =
+        document.getElementById("discoveryTitle");
+
+    const description =
+        document.getElementById("discoveryDescription");
+
+    const summary =
+        document.getElementById("discoverySummary");
+
+    const backButton =
+        document.getElementById("discoveryBack");
+
+    const formattedPhone = discoveryBusinessPhone.replace(
+        /^1(\d{3})(\d{3})(\d{4})$/,
+        "+1 ($1) $2-$3"
+    );
+
+
+
+// International phone number input
+    const phoneInput =
+        document.getElementById("discoveryPhoneInput");
+
+    const phoneIti = window.intlTelInput(phoneInput, {
+            initialCountry: "ca",
+            numberDisplayFormat: "INTERNATIONAL",
+
+            // Use a normal dropdown on desktop and mobile
+            countrySelectorMode: "DROPDOWN",
+
+            // Prevent clipping inside the dialog
+            dropdownParent: discoveryDialog,
+
+            // Keep desktop dropdown aligned with phone input
+            matchDropdownWidth: true,
+            formatAsYouType: true,
+            loadUtils: () => import(
+        "https://cdn.jsdelivr.net/npm/intl-tel-input@29.5.8/dist/js/utils.js"
+    )
+});
+
+// Clear validation errors when the number changes
+    phoneInput.addEventListener("input", () => {
+        phoneInput.setCustomValidity("");
+});
+
+    phoneInput.addEventListener("countrychange", () => {
+        phoneInput.setCustomValidity("");
+});
+
+    const validBusinessPhone =
+        /^[1-9]\d{6,14}$/.test(discoveryBusinessPhone);
+
+    if (validBusinessPhone) {
+        discoveryPhone.href = `tel:+${discoveryBusinessPhone}`;
+        discoveryPhoneLabel.textContent = formattedPhone;
+        discoveryPhone.hidden = false;
+        discoveryWhatsapp.hidden = false;
+        discoveryPhonePending.hidden = true;
+    } else {
+        discoveryPhone.hidden = true;
+        discoveryWhatsapp.hidden = true;
+        discoveryPhonePending.hidden = false;
+    }
+
+    // Show or hide custom topic field
+    function updateOtherField() {
+        const isOther = discoveryTopic.value === "Other";
+
+        discoveryOtherWrap.hidden = !isOther;
+        discoveryOther.required = isOther;
+
+        if (!isOther) {
+            discoveryOther.value = "";
+        }
+    }
+
+    discoveryTopic.addEventListener(
+        "change",
+        updateOtherField
+    );
+
+    // Change popup content between steps
+    function showDiscoveryStep(step) {
+        const firstStep = step === 1;
+
+        discoveryStep1.hidden = !firstStep;
+        discoveryStep2.hidden = firstStep;
+
+        title.textContent = firstStep
+            ? "Let's begin with a conversation."
+            : "You're one step closer.";
+
+        description.textContent = firstStep
+            ? "Tell us a little about yourself so we can personalize your discovery call request."
+            : "Choose how you'd like to connect with BloomPath.";
+
+        if (firstStep) {
+            document.getElementById("discoveryName").focus();
+        } else {
+            discoveryEmail.focus();
+        }
+    }
+
+    // Open Step 1 from all existing CTA buttons
+    document.querySelectorAll(
+        "[data-open-discovery]"
+    ).forEach(button => {
+
+        button.addEventListener("click", () => {
+
+        discoveryReturnFocus = button;
+
+    discoveryForm.reset();
+    updateOtherField();
+
+    discoveryDialog.showModal();
+    document.body.classList.add("discovery-open");
+
+    showDiscoveryStep(1);
+});
+
+});
+
+    // Form submission moves to Step 2
+ /*   discoveryForm.addEventListener("submit", event => {
+
+        event.preventDefault();
+
+    const name = document
+        .getElementById("discoveryName")
+        .value.trim();
+
+    const email = document
+        .getElementById("discoveryEmailInput")
+        .value.trim();
+
+    const phone = document
+        .getElementById("discoveryPhoneInput")
+        .value.trim();
+
+    const topic = discoveryTopic.value === "Other"
+        ? `Other: ${discoveryOther.value.trim()}`
+        : discoveryTopic.value;
+
+    // Prepare a personalized message
+    const message = [
+        "Hello BloomPath,",
+        "",
+        "I would like to book a free discovery call.",
+        "",
+        `Name: ${name}`,
+        `Coaching Topic: ${topic}`,
+        `Email: ${email}`,
+        `Phone Number: ${phone}`,
+        "",
+        "Please let me know the next steps.",
+        "",
+        "Thank you!"
+    ].join("\n");
+
+    const subject =
+        `Free Discovery Call Request - ${name}`;
+
+    // Prepare email draft
+    discoveryEmail.href =
+        `mailto:bloompathelevate@gmail.com` +
+        `?subject=${encodeURIComponent(subject)}` +
+        `&body=${encodeURIComponent(message)}`;
+
+    // Prepare WhatsApp draft
+    if (validBusinessPhone) {
+        discoveryWhatsapp.href =
+            `https://wa.me/${discoveryBusinessPhone}` +
+            `?text=${encodeURIComponent(message)}`;
+    }
+
+    // Show a brief summary
+    summary.textContent =
+        `Your selected topic: ${topic}`;
+
+    // Navigate to Step 2
+    showDiscoveryStep(2);
+
+});*/
+
+
+    discoveryForm.addEventListener("submit", async event => {
+
+        event.preventDefault();
+
+        // Get visitor details
+        const name = document
+            .getElementById("discoveryName")
+            .value.trim();
+
+        const email = document
+            .getElementById("discoveryEmailInput")
+            .value.trim();
+
+        const topic = discoveryTopic.value === "Other"
+            ? `Other: ${discoveryOther.value.trim()}`
+            : discoveryTopic.value;
+
+        // Ensure the phone formatting library is ready
+        try {
+            await phoneIti.promise;
+        } catch (error) {
+            phoneInput.setCustomValidity(
+                "Phone validation is unavailable. Please try again."
+            );
+            phoneInput.reportValidity();
+            return;
+        }
+
+        // Validate phone number against selected country
+        if (!phoneIti.isValidNumber()) {
+            phoneInput.setCustomValidity(
+                "Please enter a valid phone number for the selected country."
+            );
+            phoneInput.reportValidity();
+            return;
+        }
+
+        phoneInput.setCustomValidity("");
+
+        // International phone number, e.g. +1 403-555-0123
+        const phone = phoneIti.getNumber("INTERNATIONAL");
+
+        // =================================
+        // EMAIL MESSAGE
+        // =================================
+
+        const emailSubject =
+            `Free Discovery Call Request - ${name}`;
+
+        const emailMessage = [
+            "Hello BloomPath,",
+            "",
+            "I hope you are doing well.",
+            "",
+            "I would like to request a free discovery call to explore how your coaching services can support my personal growth and goals.",
+            "",
+            "MY DETAILS",
+            "------------------------------",
+            `Full Name: ${name}`,
+            `Coaching Topic: ${topic}`,
+            `Email Address: ${email}`,
+            `Phone Number: ${phone}`,
+            "------------------------------",
+            "",
+            "I would appreciate more information about the next steps and available scheduling options.",
+            "",
+            "Thank you, and I look forward to connecting.",
+            "",
+            "Best regards,",
+            name
+        ].join("\n");
+
+        discoveryEmail.href =
+            "mailto:bloompathelevate@gmail.com" +
+            `?subject=${encodeURIComponent(emailSubject)}` +
+            `&body=${encodeURIComponent(emailMessage)}`;
+
+
+        // =================================
+        // WHATSAPP MESSAGE
+        // =================================
+
+        const whatsappMessage = [
+            "*BLOOMPATH | FREE DISCOVERY CALL*",
+            "",
+            "Hello BloomPath,",
+            "",
+            "I'd like to request a free discovery call to learn more about your coaching services.",
+            "",
+            "*My Details*",
+            "",
+            `*Name:* ${name}`,
+            `*Coaching Topic:* ${topic}`,
+            `*Email:* ${email}`,
+            `*Phone:* ${phone}`,
+            "",
+            "I'd appreciate information about the next steps and available scheduling options.",
+            "",
+            "Thank you! I look forward to connecting."
+        ].join("\n");
+
+        if (validBusinessPhone) {
+            discoveryWhatsapp.href =
+                `https://wa.me/${discoveryBusinessPhone}` +
+                `?text=${encodeURIComponent(whatsappMessage)}`;
+        }
+
+        // Show the selected topic
+        summary.textContent =
+            `Your selected topic: ${topic}`;
+
+        // Move to Step 2
+        showDiscoveryStep(2);
+
+    });
+
+
+    // Go back to edit details
+    backButton.addEventListener("click", () => {
+        showDiscoveryStep(1);
+});
+
+    // Close popup
+    const closeDiscovery = () => discoveryDialog.close();
+
+    discoveryDialog
+        .querySelector("[data-close-discovery]")
+        .addEventListener("click", closeDiscovery);
+
+    // Close by clicking outside popup
+    discoveryDialog.addEventListener("click", event => {
+        if (event.target === discoveryDialog) {
+        closeDiscovery();
+    }
+});
+
+    discoveryDialog.addEventListener("close", () => {
+        document.body.classList.remove("discovery-open");
+    discoveryReturnFocus?.focus();
+});
+
 }
+
 
 
 
